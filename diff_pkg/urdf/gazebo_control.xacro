@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <gazebo>
+        <plugin name="diff_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+            <!--Update rate in Hz-->
+            <updateRate>100</updateRate>
+            <!--Wheel Information-->
+            <leftJoint>left_wheel_joint</leftJoint>
+            <rightJoint>right_wheel_joint</rightJoint>
+            <wheelSeparation>0.575</wheelSeparation>
+            <wheelDiameter>0.12</wheelDiameter>
+            <!--Limits-->
+            <wheelTorque>34</wheelTorque>
+            <wheelAcceleration>1.0</wheelAcceleration>
+            
+            <!-- Topic to receive geometry_msgs/Twist message commands, defaults to `cmd_vel` -->
+            <commandTopic>cmd_vel</commandTopic>
+            <!-- Topic to publish nav_msgs/Odometry messages, defaults to `odom` -->
+            <odometryTopic>odom</odometryTopic>
+            <!-- Odometry frame, defaults to `odom` -->
+            <odometryFrame>odom</odometryFrame>
+            <!--<odometry_frame>odom</odometry_frame>-->
+            <!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
+            <robotBaseFrame>base_link</robotBaseFrame>
+            <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
+            <odometrySource>1</odometrySource> 
+            <!--<robot_base_frame>base_link</robot_base_frame>-->
+            <!-- Set to true to publish transforms for the wheel links, defaults to false -->
+            <publishWheelTF>true</publishWheelTF>
+            <!--<publish_wheel_tf>true</publish_wheel_tf>-->
+            <!-- Set to true to publish transforms for the odometry, defaults to true -->
+            <publishOdom>true</publishOdom>
+            <!--<publish_odom>true</publish_odom>-->
+            <!-- Set to true to publish sensor_msgs/JointState on /joint_states for the wheel joints, defaults to false -->
+            <publishWheelJointState>true</publishWheelJointState>
+
+            <publishTf>1</publishTf>
+            <publishOdomTF>true</publishOdomTF>
+            <rosDebugLevel>na</rosDebugLevel>
+            <!-- Set to true to swap right and left wheels, defaults to true -->
+            <legacyMode>false</legacyMode>
+
+        </plugin>
+    </gazebo>
+    
+</robot>
